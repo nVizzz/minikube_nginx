@@ -18,10 +18,32 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nvizzz/nginx_task:0.0.5
+      - image: nvizzz/nginx_task:0.0.6
         name: nginx
         ports:
-        - containerPort: 80
+        - name: nginx
+          containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: nginx
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: nginx
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
+          requests:
+            cpu: 200m
+            memory: 64Mi
         resources: {}
 status: {}
 ---
@@ -37,6 +59,7 @@ spec:
   - port: 80
     protocol: TCP
     targetPort: 80
+    nodePort: 30000
   selector:
     app: nginx
   type: NodePort

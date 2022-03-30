@@ -1,0 +1,27 @@
+container:
+  image: nvizzz/nginx_task:0.0.6
+  port: 80
+
+replicas: 1
+
+liveness:
+  initialDelay: 30
+  period: 10
+  timeout: 5
+
+readiness:
+  initialDelay: 30
+  period: 10
+  timeout: 5
+
+limits:
+  cpu: 500m
+  memory: 128Mi
+
+requests:
+  cpu: 200m
+  memory: 64Mi
+
+service:
+  port: 80
+  nodePort: 30000

@@ -1,0 +1,14 @@
+apiVersion: v2
+name: nginx_task
+description: Chart for deploying a simple vebsite
+type: application
+version: 0.0.1
+appVersion: 0.0.6
+
+keywords:
+  - nginx
+  - http
+
+maintainers:
+  - name: Roman Izvozchikov
+    email: Roman_Izvozchikov@epam.com
